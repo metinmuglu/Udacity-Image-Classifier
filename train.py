@@ -11,11 +11,11 @@ import argparse
 import json
 import time as  time
 
-parser = argparse.ArgumentParser (description = "Parser of training script")
+parser = argparse.ArgumentParser (description = "we can do it Parser of training script")
 parser.add_argument ('--hidden_units', help = 'Hidden units in Classifier. Default value is 2048', type = int)
 parser.add_argument ('--save_dir', help = 'Provide saving directory. Optional argument', type = str)
-parser.add_argument ('--epochs', help = 'Number of epochs', type = int)
-parser.add_argument ('--GPU', help = "Option to use GPU", type = str)
+parser.add_argument ('--epochs', help = 'you can see output secreen of the Number of epochs', type = int)
+parser.add_argument ('--GPU', help = "Cuda maybe Option to use GPU", type = str)
 parser.add_argument ('--arch', help = 'Vgg13 can be used if this argument specified, otherwise Alexnet will be used', type = str)
 parser.add_argument ('--lrn', help = 'Learning rate, default value 0.001', type = float)
 parser.add_argument ('data_dir', help = 'Provide data directory. must argument', type = str)
@@ -32,6 +32,9 @@ if args.GPU == 'GPU':
     device = 'cuda'
 else:
     device = 'cpu'
+    
+# I always use to cpu
+device = 'cpu'
 
 #fixed condition
 if data_dir: 
@@ -139,7 +142,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.classifier.parameters(), lr=0.01)
 
 model.to (device) 
-epochs = 1
+epochs = 8
 steps = 0
 cuda = torch.cuda.is_available()
 print_every = 40

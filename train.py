@@ -155,6 +155,7 @@ else:
 running_loss = 0
 accuracy = 0
 
+#model is train date
 start = time.time()
 print('Training started')
 
@@ -177,14 +178,15 @@ for e in range (epochs):
                 
             print("Epoch: {}/{}.. ".format(e+1, epochs),
                   "\n              Training Loss: {:.3f}.. ".format(running_loss/print_every),
-                  "Valid Loss: {:.3f}.. ".format(valid_loss/len(valid_loader)),
-                  "Valid Accuracy: {:.3f}%".format(accuracy/len(valid_loader)*100))
+                  "Loss: {:.3f}.. ".format(valid_loss/len(valid_loader)),
+                  "Accuracy: {:.3f}%".format(accuracy/len(valid_loader)*100))
 
             running_loss = 0
             model.train()
 
+# we can see total model train time
 time_elapsed = time.time() - start
-print("\nTotal time: {:.0f}m {:.0f}s".format(time_elapsed//60, time_elapsed % 60))
+print("\n Total time: {:.0f}m {:.0f}s".format(time_elapsed//60, time_elapsed % 60))
 
 model.to ('cpu') 
 model.class_to_idx = my_train_image_datasets.class_to_idx 

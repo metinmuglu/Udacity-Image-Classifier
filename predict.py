@@ -137,9 +137,9 @@ else:
 model = load_checkpoint (args.load_dir)
 
 if args.top_k:
-    nm_cl = args.top_k
+    number_cl = args.top_k
 else:
-    nm_cl = 1
+    number_cl = 1
 
 #for condition I check all image in folder --> loop by for
 klasor = filename  #'flowers/valid/1'
@@ -149,10 +149,10 @@ for i in os.listdir(klasor):
         print ('File => ', i)
     elif os.path.isfile(dosya):
         print ('Image => ', i)
-        probs, classes = predict (klasor+'/'+i, model, nm_cl, device)
-        class_names = [cat_to_name [item] for item in classes]
-        for l in range (nm_cl):
-            print("Number: {}/{}.. ".format(l+1, nm_cl),
-                "Class name: {}.. ".format(class_names [l]),
-                "Probability: {:.3f}..% ".format(probs [l]*100),
+        probs, classes = predict (klasor+'/'+i, model, number_cl, device)
+        names_class = [cat_to_name [item] for item in classes]
+        for l in range (number_cl):
+            print("Number: {}/{}.. ".format(l+1, number_cl),
+                "Name to Class: {}.. ".format(names_class [l]),
+                "Model Probability: {:.3f}..% ".format(probs [l]*100),
                 )  
